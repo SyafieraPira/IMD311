@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>favourite foods</title>
+</head>
+<body>
+<body bgcolor="#FCDCE5">
+<html>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #D98880;
+}
+
+.topnav a {
+  float: left;
+  color: #641E16;
+  text-align: center;
+  padding: 19px 47px;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+</head>
+<body>
+<div class="topnav">
+<b><a href="index.html">Home</a></b>
+<b><a href="aboutme.html">About Me</a></b>
+<b><a href="education.html">Education</a></b>
+<b><a href="achievements.html">Achievements</a></b>
+<b><a href="favouritefoods.html">Fav Foods</a></b>
+<b><a href="family.html">Family</a></b>
+<b><a href="friends.html">Friends</a></b>
+<b><a href="games.html">Game</a></b>
+</div>
+<style>
+.container {
+  position: relative;
+  width: 100%;
+  height: 50%
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  background-color: #FF78AB;
+  overflow: hidden;
+  width: 100%;
+  height:0;
+  transition: .5s ease;
+}
+
+.container:hover .overlay {
+  bottom: 0;
+  height: 100%;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <img src="banner.png" alt="Avatar" class="image">
+  <div class="overlay">
+    <div class="text">&#10084;Hello World&#10084;!</div>
+  </div>
+</div>
+<audio controls autoplay src="myfav.mp3"></audio>
+<br>
+
+<script type='text/javascript'>
+// <![CDATA[
+var colour="#DE3163";
+var sparkles=100;
+var x=ox=400;
+var y=oy=300;
+var swide=800;
+var shigh=600;
+var sleft=sdown=0;
+var tiny=new Array();
+var star=new Array();
+var starv=new Array();
+var starx=new Array();
+var stary=new Array();
+var tinyx=new Array();
+var tinyy=new Array();
+var tinyv=new Array();
+window.onload=function() { if (document.getElementById) {
+var i, rats, rlef, rdow;
+for (var i=0; i<sparkles; i++) {
+var rats=createDiv(3, 3);
+rats.style.visibility="hidden";
+document.body.appendChild(tiny[i]=rats);
+starv[i]=0;
+tinyv[i]=0;
+var rats=createDiv(5,5);
+rats.style.backgroundColor="transparent";
+rats.style.visibility="hidden";
+var rlef=createDiv(1, 5);
+var rdow=createDiv(5, 1);
+rats.appendChild(rlef);
+rats.appendChild(rdow);
+rlef.style.top="3px";
+rlef.style.left="0px";
+rdow.style.top="0px";
+rdow.style.left="3px";
+document.body.appendChild(star[i]=rats);
+}
+set_width();
+sparkle();
+}}
+function sparkle() {
+var c;
+if (x!=ox || y!=oy) {
+ox=x;
+oy=y;
+for (c=0; c<sparkles; c++) if (!starv[c]) {
+star[c].style.left=(starx[c]=x)+"px";
+
+
+star[c].style.top=(stary[c]=y)+"px";
+star[c].style.clip="rect(0px, 5px, 5px, 0px)";
+star[c].style.visibility="visible";
+starv[c]=50;
+break;
+}
+}
+for (c=0; c<sparkles; c++) {
+if (starv[c]) update_star(c);
+if (tinyv[c]) update_tiny(c);
+}
+setTimeout("sparkle()", 40);
+}
+function update_star(i) {
+if (--starv[i]==25) star[i].style.clip="rect(1px, 4px, 4px, 1px)";
+if (starv[i]) {
+stary[i]+=1+Math.random()*3;
+if (stary[i]<shigh+sdown) {
+star[i].style.top=stary[i]+"px";
+starx[i]+=(i%5-2)/5;
+star[i].style.left=starx[i]+"px";
+}
+else {
+star[i].style.visibility="hidden";
+starv[i]=0;
+return;
+}
+}
+else {
+tinyv[i]=50;
+tiny[i].style.top=(tinyy[i]=stary[i])+"px";
+tiny[i].style.left=(tinyx[i]=starx[i])+"px";
+tiny[i].style.width="2px";
+tiny[i].style.height="2px";
+star[i].style.visibility="hidden";
+tiny[i].style.visibility="visible"
+}
+}
+function update_tiny(i) {
+if (--tinyv[i]==25) {
+tiny[i].style.width="1px";
+tiny[i].style.height="1px";
+}
+if (tinyv[i]) {
+tinyy[i]+=1+Math.random()*3;
+if (tinyy[i]<shigh+sdown) {
+tiny[i].style.top=tinyy[i]+"px";
+tinyx[i]+=(i%5-2)/5;
+tiny[i].style.left=tinyx[i]+"px";
+}
+else {
+
+tiny[i].style.visibility="hidden";
+tinyv[i]=0;
+return;
+}
+}
+else tiny[i].style.visibility="hidden";
+}
+document.onmousemove=mouse;
+function mouse(e) {
+set_scroll();
+y=(e)?e.pageY:event.y+sdown;
+x=(e)?e.pageX:event.x+sleft;
+}
+function set_scroll() {
+if (typeof(self.pageYOffset)=="number") {
+sdown=self.pageYOffset;
+sleft=self.pageXOffset;
+}
+else if (document.body.scrollTop || document.body.scrollLeft) {
+sdown=document.body.scrollTop;
+sleft=document.body.scrollLeft;
+}
+else if (document.documentElement && (document.documentElement.scrollTop || document.documentElement.scrollLeft)) {
+sleft=document.documentElement.scrollLeft;
+sdown=document.documentElement.scrollTop;
+}
+else {
+sdown=0;
+sleft=0;
+}
+}
+window.onresize=set_width;
+function set_width() {
+if (typeof(self.innerWidth)=="number") {
+swide=self.innerWidth;
+shigh=self.innerHeight;
+}
+else if (document.documentElement && document.documentElement.clientWidth) {
+swide=document.documentElement.clientWidth;
+shigh=document.documentElement.clientHeight;
+}
+else if (document.body.clientWidth) {
+swide=document.body.clientWidth;
+shigh=document.body.clientHeight;
+}
+}
+function createDiv(height, width) {
+var div=document.createElement("div");
+div.style.position="absolute";
+div.style.height=height+"px";
+div.style.width=width+"px";
+div.style.overflow="hidden";
+div.style.backgroundColor=colour;
+return (div);
+}
+//]]>
+</script>
+<br>
+<br>
+<marquee style="scroll" scrollamount="10">&#127835;&#129367;&#127844;&#127859;&#127829;&#127828;&#129473;&#127850;&#127847;&#127790;&#127839;&#127843;&#127835;&#129367;&#127844;&#127859;&#127829;&#127828;&#129473;&#127850;&#127847;&#127790;&#127839;&#127843;&#127835;&#129367;&#127844;&#127859;&#127829;&#127828;&#129473;&#127850;&#127847;&#127790;&#127839;&#127843;&#127835;&#129367;&#127844;&#127859;&#127829;&#127828;&#129473;&#127850;&#127847;&#127790;&#127839;&#127843;&#127835;&#129367;&#127844;&#127859;&#127829;&#127828;&#129473;&#127850;&#127847;&#127790;&#127839;&#127843;</marquee>
+<br>
+<br>
+<body>
+<center>
+<div class="slideshow-container">
+<div class="mySlides fade">
+  <img src="psfood1.png" width="700" height="400"
+</div>
+</div> 
+<div class="mySlides fade">
+  <img src="psfood2.png" width="700" height="400">
+</div>
+<div class="mySlides fade">
+  <img src="psfood3.png" width="700" height="400">
+</div>
+<div style="text-align:center">
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+</div>
+
+<script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+  setTimeout(showSlides, 2000); // Change image every 4 seconds
+}
+</script>
+<br>
+<br>
+<br>
+<br><br>
+<br><br>
+<img src="eat1nobg.gif" align="left" width="43%">
+<div class="card"> 
+	<div class="card-inner"> 
+		<div class="card-front"> 
+	
+			<img src="nasikandar.jpg" style="width:200px;height:200px;"> 
+		</div> 
+		
+		<div class="card-back"> 
+			<h1>Nasi Kandar</h1>
+			<p>I love Nasi Kandar!&#127835;</p>  
+			<a href="https://www.facebook.com/sheikbistro.official/" target="_blank">Nasi Kandar Yasmeen</a>  
+			 
+			</a> <br>
+			<a href="https://www.facebook.com/p/Nasi-Kandar-Sulaiman-100063702037503/" target="_blank">Nasi Kandar Sulaiman</a>  
+			
+			</a>
+		</div> 
+	</div> 
+</div> 
+<p align="left">&#128540;I really like eating Nasi Kandar, my family and I really like Nasi Kandar&#128514;, especially my brother&#128518;, at the beginning he was the one who encouraged me to eat Nasi Kandar and suddenly I like Nasi Kandar until now&#128523;. Among the Nasi Kandar restaurants that I have been to Nasi Kandar Yasmeen, Nasi Kandar Sulaiman, Nasi Kandar Line Clear, and others&#128523;</p>
+<style> .card { 
+	width: 200px; 
+	height: 200px; 
+	perspective: 1000px; 
+	background: white;
+} 
+.card-inner { 
+	position: relative; 
+	text-align: center; 
+	transition: transform 0.6s; 
+	transform-style: preserve-3d; 
+} 
+.card:hover .card-inner { 
+	transform: rotateY(180deg);
+	
+} 
+.card-front, .card-back { 
+	position: absolute; 
+	backface-visibility: hidden; 
+} 
+.card-back { 
+	transform: rotateY(180deg);
+	background: #97D0F2;
+	width: 200px; 
+	height: 200px;  
+} 
+</style>
+<style>
+.column {
+  float: left;
+  width: 100%;
+  padding: 10px;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+<div class="row">
+  <div class="column" style="background-color:#FFA6C8;">
+   <h1 align="left">Nasi Kandar is so Delicious</h1>
+   
+  </div>
+  </div>
+</div>
+<br>
+<br>
+<img src="eat2nobg.gif" align="right" width="40%">
+<center>
+<div class="card"> 
+	<div class="card-inner"> 
+		<div class="card-front"> 
+	
+			<img src="shawarma.jpg" style="width:200px;height:200px;"> 
+		</div> 
+		
+		<div class="card-back"> 
+			<h1>SHAWARMA</h1>
+			<p>I love Shawarma!&#127791;</p> 
+			<a href="https://imperialshawarma.ca/what-is-shawarma/" target="_blank">What is Shawarma?</a>  
+			 
+			</a> 
+		</div> 
+	</div> 
+</div> 
+<p align="left">&#128523;I also like shawarma, because the sweet fat taste on the bread is like pita bread, it is also filled with meat filling, and there is also chicken filling, the shawarma is very tasty&#12853;, I recommend it. &#128513;Last Ramadhan, my family and I went to the Bazaar to buy food and I saw a shawarma shop so &#128514;I quickly placed an order and bought the shawarma. At that time,&#128514;I had a spontaneous chat with the seller about a little background on shawarma and overall the shawarma was very good&#128525;.</p>
+<style> .card { 
+	width: 200px; 
+	height: 200px; 
+	perspective: 1000px; 
+	background: white;
+} 
+.card-inner { 
+	position: relative; 
+	text-align: center; 
+	transition: transform 0.6s; 
+	transform-style: preserve-3d; 
+} 
+.card:hover .card-inner { 
+	transform: rotateY(180deg);
+	
+} 
+.card-front, .card-back { 
+	position: absolute; 
+	backface-visibility: hidden; 
+} 
+.card-back { 
+	transform: rotateY(180deg);
+	background: #97D0F2;
+	width: 200px; 
+	height: 200px;  
+} 
+</style></center>
+<br>
+<style>
+.column {
+  float: left;
+  width: 100%;
+  padding: 10px;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+<br>
+<div class="row">
+  <div class="column" style="background-color:#FFC8DD;">
+   <h1>Shawarma is the best</h1>
+   
+  </div>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<img src="eat3nobg.gif" align="left" width="40%">
+<center>
+<div class="card"> 
+	<div class="card-inner"> 
+		<div class="card-front"> 
+	
+			<img src="kspicychicken.jpg" style="width:200px;height:200px;"> 
+		</div> 
+		
+		<div class="card-back"> 
+			<h1>KOREAN SPICY CHICKEN</h1> 
+			<p>I love Korean Spicy Chicken!&#127831;</p> 
+			 
+		</div> 
+	</div> 
+</div> 
+<p align="left">&#128523;Among many chickens, I like this Korean spicy chicken spread the most because the spicy flavor is very good and the level of spiciness is also very good&#128540;. Sometimes, I've made Korean spicy popcorn chicken at home and it's still delicious&#129316;because I use original Korean sauces to make the spicy Korean chicken&#129322;.</p>
+<style> .card { 
+	width: 200px; 
+	height: 200px; 
+	perspective: 1000px; 
+	background: white;
+} 
+.card-inner { 
+	position: relative; 
+	text-align: center; 
+	transition: transform 0.6s; 
+	transform-style: preserve-3d; 
+} 
+.card:hover .card-inner { 
+	transform: rotateY(180deg);
+	
+} 
+.card-front, .card-back { 
+	position: absolute; 
+	backface-visibility: hidden; 
+} 
+.card-back { 
+	transform: rotateY(180deg);
+	background: #97D0F2;
+	width: 200px; 
+	height: 200px;  
+} 
+</style></center>
+<br>
+<br>
+<style>
+.column {
+  float: left;
+  width: 100%;
+  padding: 10px;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+<br>
+<div class="row">
+  <div class="column" style="background-color:#FFA6C8;">
+   <h1 align="right">Korean Spicy Chicken so Yummy!</h1>
+   
+  </div>
+  </div>
+</div>
+<br><br>
+<img src="eat4nobg.gif" align="right" width="40%">
+<center>
+<div class="card"> 
+	<div class="card-inner"> 
+		<div class="card-front"> 
+	
+			<img src="kunafa.jpg" style="width:200px;height:200px;"> 
+		</div> 
+		
+		<div class="card-back"> 
+			<h1>KUNAFA</h1> 
+			<p>I love Kunafa!&#129383;</p> 
+			
+			<a href="https://steemit.com/food/@draboq/what-is-kunafa" target="_blank">What is Kunafa?</a>  
+			 
+			</a> 
+		</div> 
+	</div> 
+</div> 
+<p align="left">&#129321;I also fell in love with kunafa when there was a time when this kunafa became a hot issue and went viral with its deliciousness. &#129488;Then, I was also interested in it and I tried to buy it to taste it. &#128525;And there's no other words, it's delicious and fatty and also perfect for dessert it's really delicious filled with cream cheese and wow everything is delicious about kunafa&#128523;</p>
+<style> .card { 
+	width: 200px; 
+	height: 200px; 
+	perspective: 1000px; 
+	background: white;
+} 
+.card-inner { 
+	position: relative; 
+	text-align: center; 
+	transition: transform 0.6s; 
+	transform-style: preserve-3d; 
+} 
+.card:hover .card-inner { 
+	transform: rotateY(180deg);
+	
+} 
+.card-front, .card-back { 
+	position: absolute; 
+	backface-visibility: hidden; 
+} 
+.card-back { 
+	transform: rotateY(180deg);
+	background: #97D0F2;
+	width: 200px; 
+	height: 200px;  
+} 
+</style></center>
+<style>
+.column {
+  float: left;
+  width: 100%;
+  padding: 10px;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+<br><br>
+<div class="row">
+  <div class="column" style="background-color:#FFC8DD;">
+   <h1>The best dessert ever!</h1>
+   
+  </div>
+  </div>
+</div>
+<br>
+<br>
+<img src="eat5nobg.gif" align="left" width="40%">
+<center>
+<div class="card"> 
+	<div class="card-inner"> 
+		<div class="card-front"> 
+	
+			<img src="churros.jpg" style="width:200px;height:200px;">  
+		</div> 
+		
+		<div class="card-back"> 
+			<h1>Churros</h1> 
+			<p>I love Churros!&#129384;</p> 
+			
+			<a href="https://www.webstaurantstore.com/blog/4506/what-are-churros.html" target="_blank">What are Churros?</a>  
+			 
+			</a> 
+		</div> 
+	</div> 
+</div> 
+<br>
+<p align="left">&#128525;I also really like churros, at first I never ate churros and one day I tried to buy churros sold in the market.&#128523;The result is that I was mesmerized by the deliciousness of churros that are sweet fat and bread as a dessert.	&#128538;I really like churros and dip them with flavored liquid, for example chocolate, caramel and other flavors, they are all very tasty&#128540;</p>
+<style>
+.column {
+  float: left;
+  width: 100%;
+  padding: 10px;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+<br>
+<div class="row">
+  <div class="column" style="background-color:#FFA6C8">
+   <h1 align="left">Fall in Love with Churros</h1>
+   
+  </div>
+  </div>
+</div>
+<marquee style="scroll" scrollamount="10">&#127835;&#129367;&#127844;&#127859;&#127829;&#127828;&#129473;&#127850;&#127847;&#127790;&#127839;&#127843;&#127835;&#129367;&#127844;&#127859;&#127829;&#127828;&#129473;&#127850;&#127847;&#127790;&#127839;&#127843;&#127835;&#129367;&#127844;&#127859;&#127829;&#127828;&#129473;&#127850;&#127847;&#127790;&#127839;&#127843;&#127835;&#129367;&#127844;&#127859;&#127829;&#127828;&#129473;&#127850;&#127847;&#127790;&#127839;&#127843;&#127835;&#129367;&#127844;&#127859;&#127829;&#127828;&#129473;&#127850;&#127847;&#127790;&#127839;&#127843;</marquee>
+<style> .card { 
+	width: 200px; 
+	height: 200px; 
+	perspective: 1000px; 
+	background: white;
+} 
+.card-inner { 
+	position: relative; 
+	text-align: center; 
+	transition: transform 0.6s; 
+	transform-style: preserve-3d; 
+} 
+.card:hover .card-inner { 
+	transform: rotateY(180deg);
+	
+} 
+.card-front, .card-back { 
+	position: absolute; 
+	backface-visibility: hidden; 
+} 
+.card-back { 
+	transform: rotateY(180deg);
+	background: #97D0F2;
+	width: 200px; 
+	height: 200px;  
+} 
+</style></center>
+</body>
+</html>
+<br><br>
+<center>
+<a href="#top"><img src="topbutton.png" width=2%</a><br><br><br><br>
+
+</center>
+<style>
+.footer {
+   position:
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #D98880;
+   color: #641E16;
+   text-align: center;
+}
+</style>
+</head>
+<body>
+<style>
+.footer {
+   position:
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #D98880;
+   color: #641E16;
+   text-align: center;
+}
+</style>
+</head>
+<body>
+<div class="footer">
+  <p>This Website is developed for IMD311 Individual Assignment(S5)</p>
+</div>
+  </div>
+</div>
+</body>
+</html>
+<center>

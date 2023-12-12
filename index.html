@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Index</title>
+</head>
+<body>
+<body bgcolor="#FCDCE5">
+<html>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #D98880;
+}
+
+.topnav a {
+  float: left;
+  color: #641E16;
+  text-align: center;
+  padding: 19px 47px;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+</head>
+<body>
+<div class="topnav">
+<b><a href="index.html">Home</a></b>
+<b><a href="aboutme.html">About Me</a></b>
+<b><a href="education.html">Education</a></b>
+<b><a href="achievements.html">Achievements</a></b>
+<b><a href="favouritefoods.html">Fav Foods</a></b>
+<b><a href="family.html">Family</a></b>
+<b><a href="friends.html">Friends</a></b>
+<b><a href="games.html">Game</a></b>
+</div>
+<style>
+.container {
+  position: relative;
+  width: 100%;
+  height: 50%
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  background-color: #FF78AB;
+  overflow: hidden;
+  width: 100%;
+  height:0;
+  transition: .5s ease;
+}
+
+.container:hover .overlay {
+  bottom: 0;
+  height: 100%;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <img src="banner.png" alt="Avatar" class="image">
+  <div class="overlay">
+    <div class="text">&#10084;Hello World&#10084;!</div>
+  </div>
+</div>
+<audio controls autoplay src="indexmusic.mp3"></audio>
+<br>
+<script type='text/javascript'>
+// <![CDATA[
+var colour="#DE3163";
+var sparkles=100;
+var x=ox=400;
+var y=oy=300;
+var swide=800;
+var shigh=600;
+var sleft=sdown=0;
+var tiny=new Array();
+var star=new Array();
+var starv=new Array();
+var starx=new Array();
+var stary=new Array();
+var tinyx=new Array();
+var tinyy=new Array();
+var tinyv=new Array();
+window.onload=function() { if (document.getElementById) {
+var i, rats, rlef, rdow;
+for (var i=0; i<sparkles; i++) {
+var rats=createDiv(3, 3);
+rats.style.visibility="hidden";
+document.body.appendChild(tiny[i]=rats);
+starv[i]=0;
+tinyv[i]=0;
+var rats=createDiv(5,5);
+rats.style.backgroundColor="transparent";
+rats.style.visibility="hidden";
+var rlef=createDiv(1, 5);
+var rdow=createDiv(5, 1);
+rats.appendChild(rlef);
+rats.appendChild(rdow);
+rlef.style.top="3px";
+rlef.style.left="0px";
+rdow.style.top="0px";
+rdow.style.left="3px";
+document.body.appendChild(star[i]=rats);
+}
+set_width();
+sparkle();
+}}
+function sparkle() {
+var c;
+if (x!=ox || y!=oy) {
+ox=x;
+oy=y;
+for (c=0; c<sparkles; c++) if (!starv[c]) {
+star[c].style.left=(starx[c]=x)+"px";
+
+
+star[c].style.top=(stary[c]=y)+"px";
+star[c].style.clip="rect(0px, 5px, 5px, 0px)";
+star[c].style.visibility="visible";
+starv[c]=50;
+break;
+}
+}
+for (c=0; c<sparkles; c++) {
+if (starv[c]) update_star(c);
+if (tinyv[c]) update_tiny(c);
+}
+setTimeout("sparkle()", 40);
+}
+function update_star(i) {
+if (--starv[i]==25) star[i].style.clip="rect(1px, 4px, 4px, 1px)";
+if (starv[i]) {
+stary[i]+=1+Math.random()*3;
+if (stary[i]<shigh+sdown) {
+star[i].style.top=stary[i]+"px";
+starx[i]+=(i%5-2)/5;
+star[i].style.left=starx[i]+"px";
+}
+else {
+star[i].style.visibility="hidden";
+starv[i]=0;
+return;
+}
+}
+else {
+tinyv[i]=50;
+tiny[i].style.top=(tinyy[i]=stary[i])+"px";
+tiny[i].style.left=(tinyx[i]=starx[i])+"px";
+tiny[i].style.width="2px";
+tiny[i].style.height="2px";
+star[i].style.visibility="hidden";
+tiny[i].style.visibility="visible"
+}
+}
+function update_tiny(i) {
+if (--tinyv[i]==25) {
+tiny[i].style.width="1px";
+tiny[i].style.height="1px";
+}
+if (tinyv[i]) {
+tinyy[i]+=1+Math.random()*3;
+if (tinyy[i]<shigh+sdown) {
+tiny[i].style.top=tinyy[i]+"px";
+tinyx[i]+=(i%5-2)/5;
+tiny[i].style.left=tinyx[i]+"px";
+}
+else {
+
+tiny[i].style.visibility="hidden";
+tinyv[i]=0;
+return;
+}
+}
+else tiny[i].style.visibility="hidden";
+}
+document.onmousemove=mouse;
+function mouse(e) {
+set_scroll();
+y=(e)?e.pageY:event.y+sdown;
+x=(e)?e.pageX:event.x+sleft;
+}
+function set_scroll() {
+if (typeof(self.pageYOffset)=="number") {
+sdown=self.pageYOffset;
+sleft=self.pageXOffset;
+}
+else if (document.body.scrollTop || document.body.scrollLeft) {
+sdown=document.body.scrollTop;
+sleft=document.body.scrollLeft;
+}
+else if (document.documentElement && (document.documentElement.scrollTop || document.documentElement.scrollLeft)) {
+sleft=document.documentElement.scrollLeft;
+sdown=document.documentElement.scrollTop;
+}
+else {
+sdown=0;
+sleft=0;
+}
+}
+window.onresize=set_width;
+function set_width() {
+if (typeof(self.innerWidth)=="number") {
+swide=self.innerWidth;
+shigh=self.innerHeight;
+}
+else if (document.documentElement && document.documentElement.clientWidth) {
+swide=document.documentElement.clientWidth;
+shigh=document.documentElement.clientHeight;
+}
+else if (document.body.clientWidth) {
+swide=document.body.clientWidth;
+shigh=document.body.clientHeight;
+}
+}
+function createDiv(height, width) {
+var div=document.createElement("div");
+div.style.position="absolute";
+div.style.height=height+"px";
+div.style.width=width+"px";
+div.style.overflow="hidden";
+div.style.backgroundColor=colour;
+return (div);
+}
+//]]>
+</script>
+<br>
+<marquee style="slide" scrollamount="10">&#127799;&#127797;&#127801;&#127804;&#127803;&#127812;&#127800;&#127799;&#127797;&#127801;&#127804;&#127803;&#127812;&#127800;&#127799;&#127797;&#127801;&#127804;&#127803;&#127812;&#127800;&#127799;&#127797;&#127801;&#127804;&#127803;&#127812;&#127800;&#127799;&#127797;&#127801;&#127804;&#127803;&#127812;&#127800;&#127799;&#127797;&#127801;&#127804;&#127803;&#127812;&#127800;&#127799;&#127797;&#127801;&#127804;&#127803;&#127812;&#127800;&#127799;&#127797;&#127801;&#127804;&#127803;&#127812;&#127800;&#127799;&#127797;&#127801;&#127804;&#127803;&#127812;&#127800;&#127799;&#127797;&#127801;&#127804;&#127803;&#127812;&#127800;&#127799;&#127797;&#127801;&#127804;&#127803;&#127812;&#127800;</marquee>
+<script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/774808/t/10">
+</script>
+<center>
+<div class="slideshow-container">
+<div class="mySlides fade">
+  <img src="bannerpira.png" width="700" height="400"
+</div>
+</div> 
+<div class="mySlides fade">
+  <img src="pspira.png" width="700" height="400">
+</div>
+<div class="mySlides fade">
+  <img src="pspira2.png" width="700" height="400">
+</div>
+<div style="text-align:center">
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+</div>
+
+<script>
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+  setTimeout(showSlides, 2000); // Change image every 5 seconds
+}
+</script>
+</center>
+<img src="index2nobg.gif" align="left" width="20%">
+<br>
+<div class="notes">
+  <p align="left">"Find out who you are and do it on purpose." </p>
+</div>
+<div class="notes">
+  <p align="left">“Live life to the fullest, and focus on the positive.”</p>
+</div>
+<div class="notes">
+  <p align="left">“You'll never do a whole lot unless you're brave enough to try.”</p>
+</div>
+<div class="notes">
+  <p align="left">“Always turn a negative situation into a positive situation.”</p>
+</div>
+<style>
+.notes{
+  background-color: #FFB8D3;
+  border-left: 6px solid #FF649F;
+  border-right: 6px solid #FF649F;
+  width: 35%;
+ 
+}
+</style>
+</head>
+<br>
+<table border="5" align="center" cellpadding="5" cellspacing="10" width="80%" bgcolor="#FFA6BF">
+<center>
+<tr align="center">
+<td colspan="1"><img src="me4.jpg" width="40%" height="20%"></td>
+<td>Assalamualaikum guys!<br><br> My name is Nur Aleeya Syafiera binti Jasmani. In general, I am a student in the<br>information management diploma and I am required to createa personal website individually with the aim of completing the assignment in the subject IMD311. <br><br>However, throughout the process of completing this personal website, I gained a variety of<br>knowledge and skills. Besides, it is very fun when you are able to create a website because all creativity depends on yourself Enjoy everyone,<br>thank you bye!!</td>
+</tr>
+</table>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<table border="1" align="center">
+<center>
+<tr align="center">
+<th colspan="2" bgcolor="#FF9EC3">Credit</th>
+</tr>
+<tr>
+<th width="20%" bgcolor="#FFBFD7 ">Name</th>
+<td bgcolor="#FFDCE9">Nur Aleeya Syafiera binti Jasmani</td>
+</tr>
+<tr>
+<th width="20%" bgcolor="#FFBFD7">Student ID</th>
+<td bgcolor="#FFDCE9">2021895672</td>
+</tr>
+<tr>
+<th width="20%" bgcolor="#FFBFD7">Class</th>
+<td bgcolor="#FFDCE9">KIM1105C</td>
+</tr>
+</table>
+<br>
+<br>
+<center>
+<a href="#top"><img src="topbutton.png" width=2%</a></center>
+<style>
+.footer {
+   position:
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #D98880;
+   color: #641E16;
+   text-align: center;
+}
+</style>
+</head>
+<body>
+<div class="footer">
+  <p>This Website is developed for IMD311 Individual Assignment(S5)</p>
+</div>
+  </div>
+</div>
+</center>
+<br>
+</body>
+</html>

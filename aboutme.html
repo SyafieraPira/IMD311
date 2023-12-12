@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>About Me</title>
+</head>
+<body>
+<body bgcolor="#FCDCE5">
+<html>
+<title>Bar Navigation</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #D98880;
+}
+
+.topnav a {
+  float: left;
+  color: #641E16;
+  text-align: center;
+  padding: 19px 47px;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+</head>
+<body>
+<div class="topnav">
+<b><a href="index.html">Home</a></b>
+<b><a href="aboutme.html">About Me</a></b>
+<b><a href="education.html">Education</a></b>
+<b><a href="achievements.html">Achievements</a></b>
+<b><a href="favouritefoods.html">Fav Foods</a></b>
+<b><a href="family.html">Family</a></b>
+<b><a href="friends.html">Friends</a></b>
+<b><a href="games.html">Game</a></b>
+</div>
+<style>
+.container {
+  position: relative;
+  width: 100%;
+  height: 50%
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  background-color: #FF78AB;
+  overflow: hidden;
+  width: 100%;
+  height:0;
+  transition: .5s ease;
+}
+
+.container:hover .overlay {
+  bottom: 0;
+  height: 100%;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <img src="banner.png" alt="Avatar" class="image">
+  <div class="overlay">
+    <div class="text">&#10084;Hello World&#10084;!</div>
+  </div>
+</div>
+<audio controls autoplay src="abtmemusic.mp3"></audio>
+<br>
+<script type='text/javascript'>
+// <![CDATA[
+var colour="#DE3163";
+var sparkles=100;
+var x=ox=400;
+var y=oy=300;
+var swide=800;
+var shigh=600;
+var sleft=sdown=0;
+var tiny=new Array();
+var star=new Array();
+var starv=new Array();
+var starx=new Array();
+var stary=new Array();
+var tinyx=new Array();
+var tinyy=new Array();
+var tinyv=new Array();
+window.onload=function() { if (document.getElementById) {
+var i, rats, rlef, rdow;
+for (var i=0; i<sparkles; i++) {
+var rats=createDiv(3, 3);
+rats.style.visibility="hidden";
+document.body.appendChild(tiny[i]=rats);
+starv[i]=0;
+tinyv[i]=0;
+var rats=createDiv(5,5);
+rats.style.backgroundColor="transparent";
+rats.style.visibility="hidden";
+var rlef=createDiv(1, 5);
+var rdow=createDiv(5, 1);
+rats.appendChild(rlef);
+rats.appendChild(rdow);
+rlef.style.top="3px";
+rlef.style.left="0px";
+rdow.style.top="0px";
+rdow.style.left="3px";
+document.body.appendChild(star[i]=rats);
+}
+set_width();
+sparkle();
+}}
+function sparkle() {
+var c;
+if (x!=ox || y!=oy) {
+ox=x;
+oy=y;
+for (c=0; c<sparkles; c++) if (!starv[c]) {
+star[c].style.left=(starx[c]=x)+"px";
+
+
+star[c].style.top=(stary[c]=y)+"px";
+star[c].style.clip="rect(0px, 5px, 5px, 0px)";
+star[c].style.visibility="visible";
+starv[c]=50;
+break;
+}
+}
+for (c=0; c<sparkles; c++) {
+if (starv[c]) update_star(c);
+if (tinyv[c]) update_tiny(c);
+}
+setTimeout("sparkle()", 40);
+}
+function update_star(i) {
+if (--starv[i]==25) star[i].style.clip="rect(1px, 4px, 4px, 1px)";
+if (starv[i]) {
+stary[i]+=1+Math.random()*3;
+if (stary[i]<shigh+sdown) {
+star[i].style.top=stary[i]+"px";
+starx[i]+=(i%5-2)/5;
+star[i].style.left=starx[i]+"px";
+}
+else {
+star[i].style.visibility="hidden";
+starv[i]=0;
+return;
+}
+}
+else {
+tinyv[i]=50;
+tiny[i].style.top=(tinyy[i]=stary[i])+"px";
+tiny[i].style.left=(tinyx[i]=starx[i])+"px";
+tiny[i].style.width="2px";
+tiny[i].style.height="2px";
+star[i].style.visibility="hidden";
+tiny[i].style.visibility="visible"
+}
+}
+function update_tiny(i) {
+if (--tinyv[i]==25) {
+tiny[i].style.width="1px";
+tiny[i].style.height="1px";
+}
+if (tinyv[i]) {
+tinyy[i]+=1+Math.random()*3;
+if (tinyy[i]<shigh+sdown) {
+tiny[i].style.top=tinyy[i]+"px";
+tinyx[i]+=(i%5-2)/5;
+tiny[i].style.left=tinyx[i]+"px";
+}
+else {
+
+tiny[i].style.visibility="hidden";
+tinyv[i]=0;
+return;
+}
+}
+else tiny[i].style.visibility="hidden";
+}
+document.onmousemove=mouse;
+function mouse(e) {
+set_scroll();
+y=(e)?e.pageY:event.y+sdown;
+x=(e)?e.pageX:event.x+sleft;
+}
+function set_scroll() {
+if (typeof(self.pageYOffset)=="number") {
+sdown=self.pageYOffset;
+sleft=self.pageXOffset;
+}
+else if (document.body.scrollTop || document.body.scrollLeft) {
+sdown=document.body.scrollTop;
+sleft=document.body.scrollLeft;
+}
+else if (document.documentElement && (document.documentElement.scrollTop || document.documentElement.scrollLeft)) {
+sleft=document.documentElement.scrollLeft;
+sdown=document.documentElement.scrollTop;
+}
+else {
+sdown=0;
+sleft=0;
+}
+}
+window.onresize=set_width;
+function set_width() {
+if (typeof(self.innerWidth)=="number") {
+swide=self.innerWidth;
+shigh=self.innerHeight;
+}
+else if (document.documentElement && document.documentElement.clientWidth) {
+swide=document.documentElement.clientWidth;
+shigh=document.documentElement.clientHeight;
+}
+else if (document.body.clientWidth) {
+swide=document.body.clientWidth;
+shigh=document.body.clientHeight;
+}
+}
+function createDiv(height, width) {
+var div=document.createElement("div");
+div.style.position="absolute";
+div.style.height=height+"px";
+div.style.width=width+"px";
+div.style.overflow="hidden";
+div.style.backgroundColor=colour;
+return (div);
+}
+//]]>
+</script>
+<br>
+<br>
+<marquee style="slide" scrollamount="10">&#127799;&#127797;&#127801;&#127804;&#127803;&#127812;&#127800;&#127799;&#127797;&#127801;&#127804;&#127803;&#127812;&#127800;&#127799;&#127797;&#127801;&#127804;&#127803;&#127812;&#127800;&#127799;&#127797;&#127801;&#127804;&#127803;&#127812;&#127800;&#127799;&#127797;&#127801;&#127804;&#127803;&#127812;&#127800;&#127799;&#127797;&#127801;&#127804;&#127803;&#127812;&#127800;&#127799;&#127797;&#127801;&#127804;&#127803;&#127812;&#127800;&#127799;&#127797;&#127801;&#127804;&#127803;&#127812;&#127800;&#127799;&#127797;&#127801;&#127804;&#127803;&#127812;&#127800;&#127799;&#127797;&#127801;&#127804;&#127803;&#127812;&#127800;&#127799;&#127797;&#127801;&#127804;&#127803;&#127812;&#127800;</marquee>
+<br>
+<body>
+<table border="2" align="right" bgcolor="#D7BDE2" width=40%">
+<tr>
+<th colspan="3"><img src="myself1.jpg" width="45%" height="30%" align="center"></th>
+<tr>
+<td bgcolor="pink">Name</td>
+<td bgcolor="pink">Nur Aleeya Syafiera binti Jasmani</td>
+</tr>
+<tr>
+<td bgcolor="#D7BDE2">Age</td>
+<td>20 Years Old</td>
+</tr>
+<tr>
+<td bgcolor="pink">Gender</td>
+<td bgcolor="pink">Female</td>
+</tr>
+<tr>
+<td bgcolor="#D7BDE2">Date of Birth</td>
+<td bgcolor="#D7BDE2">3 November 2003</td>
+</tr>
+<tr>
+<td bgcolor="pink">Religious</td>
+<td bgcolor="pink">Islamic</td>
+</tr>
+<tr>
+<td bgcolor="#D7BDE2">Nationality</td>
+<td bgcolor="#D7BDE2">Malaysia</td>
+</tr>
+<tr>
+<td bgcolor="pink">State</td>
+<td bgcolor="pink">Perak</td>
+</tr>
+<td bgcolor="#D7BDE2">City</td>
+<td bgcolor="#D7BDE2">Teluk Intan</td>
+</tr>
+<tr>
+<td bgcolor="pink">Number of family members</td>
+<td bgcolor="pink">5 members of family</td>
+</table>
+<font color="maroon" font face="times new roman" align="center"</font>
+<h1><i><b>My Biodata!</b></i></h1>
+</font>
+<font size="3">
+<p align="center">
+<center><p>&#128521;Generally, I was born in teluk intan hospital, perak. In addition, I also have siblings,<br>my brother who is 24 years old and still single &#128540;hehe, me as my older sister and<br>younger sister, in short we grew up with &#128525;love even though we all have to feel<br>all the pain to reach happiness now&#128522;.</p></center>
+<br>
+<center><p>Moreover, a little about myself, &#128538;my personality is that I am an ambivert who is<br>able to balance my way with two different atmospheres. &#128522;It's just<br>that sometimes I like to choose to be silent if there is nothing to<br>talk about. And that choice because there is a past story that<br>made me choose to be silent&#128579;, and this is the best path<br>for me and I like it&#129392;.</p></center>
+<br>
+<center><p>In short, &#128538;I am a very spoiled person in the family hehe and I am also a person who<br>does not give up easily&#128527;. As long as Allah SWT gives me that opportunity,<br>I will take that opportunity without hesitation&#129392;.</p></center>
+<br>
+<h3>&#127804;Favourite Islamic Speakers&#127804;</h3>
+<ul>
+  <li><a href="https://www.tiktok.com/@ustazwadiannuarofficial" target="_blank">Ustaz Wadi Annuar</a></li>			 
+  <li><a href="https://www.tiktok.com/@ustaz.azhar.idrus">Ustaz Azhar Idrus</a></li>
+  <li><a href="https://www.tiktok.com/@ustazmanis" target="_blank">Ustaz Manis</a></li>
+  <li><a href="https://www.tiktok.com/@sahabatuaschannel" target="_blank">Ustaz Abdul Somad</a></li>
+  <li><a href="https://www.tiktok.com/@adninroslan" target="_blank">Ustaz Adnin</a></li>
+</ul> 
+ </div>
+  </div>
+<br>
+<br>
+<marquee style="slide" scrollamount="10">&#127799;&#127797;&#127801;&#127804;&#127803;&#127812;&#127800;&#127799;&#127797;&#127801;&#127804;&#127803;&#127812;&#127800;&#127799;&#127797;&#127801;&#127804;&#127803;&#127812;&#127800;&#127799;&#127797;&#127801;&#127804;&#127803;&#127812;&#127800;&#127799;&#127797;&#127801;&#127804;&#127803;&#127812;&#127800;&#127799;&#127797;&#127801;&#127804;&#127803;&#127812;&#127800;&#127799;&#127797;&#127801;&#127804;&#127803;&#127812;&#127800;&#127799;&#127797;&#127801;&#127804;&#127803;&#127812;&#127800;&#127799;&#127797;&#127801;&#127804;&#127803;&#127812;&#127800;&#127799;&#127797;&#127801;&#127804;&#127803;&#127812;&#127800;&#127799;&#127797;&#127801;&#127804;&#127803;&#127812;&#127800;</marquee>
+<img src="hellonobg.gif" align="right" width="45%">
+<center>
+  <div class="rightcolumn">
+    <div class="card">
+      <h2><p class="mix"><span>&#127804;Introducing Myself&#127804;</p></h2></span>
+      <center><video width="450" height="340" controls>
+  <source src="aboutmev.mp4" type="video/mp4"></video>
+<br></center>
+      <div style="color: #343434; font-family: muli; font-size: 17px; margin: 0px; padding: 0px; text-align: center;">&#127804; Syafiera (Pira)</div>
+<div style="color: #343434; font-family: muli; font-size: 17px; margin: 0px; padding: 0px; text-align: center;">&#127804; UiTM Kedah</div>
+    </div>
+</center>
+<br>
+<div class="notes">
+  <p align="left">“Throughout my life until I was 20 years old, I have felt the fall and rise in terms of my family, my studies and myself, and I believe that all obstacles are to make us stronger to overcome the problems that will befall us, also I believe that every test from Allah is a sign that Allah SWT still watches and loves us so be thankful&#127804;”</p>
+</div>
+<style>
+.notes{
+  background-color: #FFB8D3;
+  border-right: 6px solid #FF649F;
+  border-left: 6px solid #FF649F;
+  width: 30%;
+  height: 50%;
+}
+</style>
+<center>
+<a href="#top"><img src="topbutton.png" width=2%</a><br><br>
+</center>
+<style>
+.footer {
+   position:
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #D98880;
+   color: #641E16;
+   text-align: center;
+}
+</style>
+</head>
+<body>
+<div class="footer">
+  <p>This Website is developed for IMD311 Individual Assignment(S5)</p>
+</div>
+  </div>
+</div>
+</body>
+</html>
+<center>
